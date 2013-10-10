@@ -41,10 +41,12 @@ abstract class OAuth2 extends Auth
         return $this->tokenUrl;
     }
 
-    public function requestAccessToken(array $request, $redirectUri)
+    protected function requestAccessToken(array $request, $redirectUri)
     {
         if (!isset($request['code'])) {
-            throw new \Exception('Invalid authorization code');
+            $msg  = isset($request['error']) ? $request['error'] : '';
+            $this->setError('Invalid authorization code: '.$msg);
+            return null;
         }
 
         $code = (string)$request['code'];
