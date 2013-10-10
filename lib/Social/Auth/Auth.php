@@ -24,9 +24,18 @@ abstract class Auth
         return $this->error;
     }
 
+    public function setError($error)
+    {
+        $this->error = $error;
+    }
+
     public function authenticate(array $request, $redirectUri = null)
     {
         $token = $this->requestAccessToken($request, $redirectUri);
+
+        if ($token == null) {
+            return null;
+        }
 
         if (!$this->isValidToken($token)) {
             $this->error = $token ? $token : 'invalid_token';
@@ -41,7 +50,7 @@ abstract class Auth
 
     abstract public function isValidToken($token);
 
-    abstract public function requestAccessToken(array $request, $redirectUri);
+    abstract protected function requestAccessToken(array $request, $redirectUri);
 
     abstract public function getAuthorizeUrl($redirectUri);
 
