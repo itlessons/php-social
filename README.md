@@ -22,6 +22,7 @@ stopAndRedirect($url);
 Now create callback file and get first api call:
 
 ```php
+// auth_callback_vk.php
 $APP_ID_VK = -1; // app id
 $APP_SECRET_VK = 'some secret code';
 $APP_SCOPE_VK = ''; //some permissions
