@@ -3,7 +3,7 @@
 namespace Social\Auth;
 
 
-use Social\SocialType;
+use Social\Type;
 
 class AuthFb extends OAuth2
 {
@@ -30,7 +30,7 @@ class AuthFb extends OAuth2
 
     public function getType()
     {
-        return SocialType::FB;
+        return Type::FB;
     }
 
     private function parseToken($token)

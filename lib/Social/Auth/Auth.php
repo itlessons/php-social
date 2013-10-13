@@ -2,6 +2,7 @@
 
 namespace Social\Auth;
 
+use Social\Error;
 use Social\Utils;
 
 abstract class Auth
@@ -12,6 +13,10 @@ abstract class Auth
     private $token;
 
     private $authUrl;
+
+    /**
+     * @var Error
+     */
     private $error;
 
     public function __construct($authUrl)
@@ -24,7 +29,7 @@ abstract class Auth
         return $this->error;
     }
 
-    public function setError($error)
+    public function setError(Error $error)
     {
         $this->error = $error;
     }
@@ -38,7 +43,7 @@ abstract class Auth
         }
 
         if (!$this->isValidToken($token)) {
-            $this->error = $token ? $token : 'invalid_token';
+            $this->setError(Error::createFromRequest($request, Error::INVALID_TOKEN));
 
             return null;
         }

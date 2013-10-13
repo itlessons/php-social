@@ -3,7 +3,7 @@
 namespace Social\Auth;
 
 
-use Social\SocialType;
+use Social\Type;
 
 class AuthMr extends OAuth2
 {
@@ -17,7 +17,7 @@ class AuthMr extends OAuth2
 
     public function getType()
     {
-        return SocialType::MR;
+        return Type::MR;
     }
 
     public function isValidToken($token)

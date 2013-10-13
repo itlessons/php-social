@@ -2,6 +2,8 @@
 
 namespace Social\Auth;
 
+use Social\Error;
+
 abstract class OAuth2 extends Auth
 {
 
@@ -44,8 +46,8 @@ abstract class OAuth2 extends Auth
     protected function requestAccessToken(array $request, $redirectUri)
     {
         if (!isset($request['code'])) {
-            $msg  = isset($request['error']) ? $request['error'] : '';
-            $this->setError('Invalid authorization code: '.$msg);
+            $this->setError(Error::createFromRequest($request, Error::INVALID_CODE));
+
             return null;
         }
 

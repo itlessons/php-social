@@ -3,7 +3,7 @@
 namespace Social;
 
 
-final class SocialType
+final class Type
 {
     const VK = 1;
     const MR = 2;

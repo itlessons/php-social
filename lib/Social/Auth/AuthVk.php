@@ -2,7 +2,7 @@
 
 namespace Social\Auth;
 
-use Social\SocialType;
+use Social\Type;
 
 class AuthVk extends OAuth2
 {
@@ -26,6 +26,6 @@ class AuthVk extends OAuth2
 
     public function getType()
     {
-        return SocialType::VK;
+        return Type::VK;
     }
 }
