@@ -1,0 +1,38 @@
+body {
+    background: #f2f2f2;
+}
+
+a {
+    color: #4F6B72;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.tst{
+    width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    color: #4F6B72;
+    font-family: "PT Sans", Verdana, Arial, sans-serif;
+    font-size: 13px;
+}
+
+.user-card{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.user-card img{
+    float: left;
+}
+
+.user-data{
+    padding-left: 60px;
+}
+
+.sign-out{
+    margin-top: 10px;
+}

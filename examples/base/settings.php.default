@@ -1,0 +1,23 @@
+<?php
+
+$settings = array(
+    \Social\Type::VK => array(
+        'app_id' => 0,
+        'secret_key' => '',
+        'scope' => '',
+    ),
+    \Social\Type::MR => array(
+        'app_id' => 0,
+        'secret_key' => '',
+        'scope' => '',
+    ),
+    \Social\Type::FB => array(
+        'app_id' => 0,
+        'secret_key' => '',
+        'scope' => '',
+    ),
+);
+
+$factory = new \Social\Factory($settings);
+
+
