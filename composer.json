@@ -2,7 +2,7 @@
     "name": "itlessons/php-social",
     "type": "library",
     "description": "PHP Social Auth Library",
-    "keywords": ["social", "auth", "twitter", "facebook", "oauth", "vk"],
+    "keywords": ["social", "auth", "twitter", "facebook", "oauth", "vk", "github"],
     "homepage": "https://github.com/itlessons/php-social",
     "license": "MIT",
     "authors": [

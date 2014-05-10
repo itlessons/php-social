@@ -54,7 +54,7 @@ if ($token) {
         &nbsp;|&nbsp;
         <a href="auth.php?type=3">Auth by facebook</a>
         &nbsp;|&nbsp;
-        <a href="auth.php?type=4">Auth by twitter</a>
+        <a href="auth.php?type=4">Auth by github</a>
     <?php endif; ?>
 </div>
 </body>

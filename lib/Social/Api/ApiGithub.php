@@ -2,7 +2,7 @@
 
 namespace Social\Api;
 
-class ApiTwitter extends Api
+class ApiGithub extends Api
 {
     private $profileUrl = 'https://api.github.com/user';
 

@@ -16,7 +16,7 @@ $settings = array(
         'secret_key' => '',
         'scope' => '',
     ),
-    \Social\Type::TWITTER => array(
+    \Social\Type::GITHUB => array(
         'app_id' => '',
         'secret_key' => '',
         'scope' => '',

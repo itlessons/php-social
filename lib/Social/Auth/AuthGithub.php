@@ -6,7 +6,7 @@ namespace Social\Auth;
 use Social\Type;
 use Social\Utils;
 
-class AuthTwitter extends OAuth2
+class AuthGithub extends OAuth2
 {
     const AUTH_URL_TW = 'https://github.com/login/oauth/authorize';
     const TOKEN_URL_TW = 'https://github.com/login/oauth/access_token';
@@ -30,7 +30,7 @@ class AuthTwitter extends OAuth2
 
     public function getType()
     {
-        return Type::TWITTER;
+        return Type::GITHUB;
     }
 
     private function parseToken($token)
