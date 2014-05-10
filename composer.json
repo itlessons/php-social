@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Routing\\": "lib/Social"
+            "Social\\": "lib/Social"
         }
     },
     "version": "0.0.1",
