@@ -16,5 +16,5 @@ class User
     public $photoBigUrl;
     public $birthDate;
     public $email;
-    public $sex = SexType::SEX_NONE;
+    public $sex = SexType::NONE;
 }

@@ -51,5 +51,24 @@ class Utils
         return $buffer;
     }
 
+    public static function parseStr($str)
+    {
+        $arr = array();
+        $pairs = explode('&', $str);
 
+        foreach ($pairs as $i) {
+            list($name, $value) = explode('=', $i, 2);
+            if (isset($arr[$name])) {
+                if (is_array($arr[$name])) {
+                    $arr[$name][] = $value;
+                } else {
+                    $arr[$name] = array($arr[$name], $value);
+                }
+            } else {
+                $arr[$name] = $value;
+            }
+        }
+
+        return $arr;
+    }
 }
