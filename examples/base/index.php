@@ -53,6 +53,8 @@ if ($token) {
         <a href="auth.php?type=2">Auth by mail.ru</a>
         &nbsp;|&nbsp;
         <a href="auth.php?type=3">Auth by facebook</a>
+        &nbsp;|&nbsp;
+        <a href="auth.php?type=4">Auth by twitter</a>
     <?php endif; ?>
 </div>
 </body>

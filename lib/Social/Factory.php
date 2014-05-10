@@ -5,10 +5,12 @@ namespace Social;
 use Social\Api\Api;
 use Social\Api\ApiFb;
 use Social\Api\ApiMr;
+use Social\Api\ApiTwitter;
 use Social\Api\ApiVk;
 use Social\Auth\Auth;
 use Social\Auth\AuthFb;
 use Social\Auth\AuthMr;
+use Social\Auth\AuthTwitter;
 use Social\Auth\AuthVk;
 use Social\Auth\Token;
 
@@ -50,6 +52,12 @@ class Factory
                     $this->settings[$type]['secret_key'],
                     $this->settings[$type]['scope']
                 );
+            case Type::TWITTER:
+                return new AuthTwitter(
+                    $this->settings[$type]['app_id'],
+                    $this->settings[$type]['secret_key'],
+                    $this->settings[$type]['scope']
+                );
         }
 
         throw new \InvalidArgumentException('Invalid type.  Can\'t create Auth object.');
@@ -75,6 +83,8 @@ class Factory
                 );
             case Type::FB:
                 return new ApiFb($token);
+            case Type::TWITTER:
+                return new ApiTwitter($token);
         }
 
         throw new \InvalidArgumentException('Invalid type. Can\'t create Api object.');

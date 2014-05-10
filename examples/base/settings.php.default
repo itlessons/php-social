@@ -16,6 +16,11 @@ $settings = array(
         'secret_key' => '',
         'scope' => '',
     ),
+    \Social\Type::TWITTER => array(
+        'app_id' => '',
+        'secret_key' => '',
+        'scope' => '',
+    ),
 );
 
 $factory = new \Social\Factory($settings);

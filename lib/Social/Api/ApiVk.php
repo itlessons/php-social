@@ -39,6 +39,11 @@ class ApiVk extends Api
             return null;
         }
 
+        return $this->createUser($data);
+    }
+
+    protected function createUser($data)
+    {
         $user = new User();
         $user->id = $data['id'];
         $user->firstName = $data['first_name'];

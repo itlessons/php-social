@@ -48,6 +48,11 @@ class ApiMr extends Api
             return null;
         }
 
+        return $this->createUser($data);
+    }
+
+    protected function createUser($data)
+    {
         $user = new User();
         $user->id = $data['uid'];
         $user->firstName = $data['first_name'];
