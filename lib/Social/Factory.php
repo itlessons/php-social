@@ -33,6 +33,14 @@ class Factory
      */
     public function createAuth($type)
     {
+        if (!Type::exists($type)) {
+            throw new \InvalidArgumentException('Invalid type. Type not exists!');
+        }
+
+        if (!isset($this->settings[$type])) {
+            throw new \InvalidArgumentException('Invalid type. Settings not set!');
+        }
+
         switch ($type) {
             case Type::VK:
                 return new AuthVk(
@@ -60,7 +68,7 @@ class Factory
                 );
         }
 
-        throw new \InvalidArgumentException('Invalid type.  Can\'t create Auth object.');
+        throw new \InvalidArgumentException('Auth strategy not implement!');
     }
 
     /**
@@ -87,7 +95,7 @@ class Factory
                 return new ApiGithub($token);
         }
 
-        throw new \InvalidArgumentException('Invalid type. Can\'t create Api object.');
+        throw new \InvalidArgumentException('Api strategy not implement!');
     }
 
     private function validateSettings($settings)

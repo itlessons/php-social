@@ -25,4 +25,9 @@ final class Type
 
         return 'Unknown';
     }
+
+    public static function exists($type)
+    {
+        return $type >= self::VK && $type <= self::GITHUB;
+    }
 }
