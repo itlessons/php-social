@@ -54,6 +54,8 @@ $user = $api->getProfile();
 
 ## Links
 [Авторизация с помощью OAuth 2.0 в Вконтакте, Моем мире и Facebook] (http://www.itlessons.info/php/auth-with-oauth2-in-vk-mailru-facebook/)
+[Авторизация на вашем сайте с помощью Github] (http://www.itlessons.info/php/auth-with-oauth2-in-github/)
+
 
 ## Author
 [itlessons](http://www.itlessons.info) ([@itlessonsinfo](http://twitter.com/itlessonsinfo))
