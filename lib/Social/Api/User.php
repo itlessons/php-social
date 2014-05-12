@@ -17,4 +17,5 @@ class User
     public $birthDate;
     public $email;
     public $sex = SexType::NONE;
+    public $info;
 }

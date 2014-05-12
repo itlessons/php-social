@@ -59,6 +59,8 @@ class ApiVk extends Api
             $user->birthDate = date('Y-m-d', strtotime($data['bdate']));
         }
 
+        $user->info = $data;
+
         return $user;
     }
 }

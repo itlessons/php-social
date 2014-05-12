@@ -55,6 +55,8 @@ class ApiFb extends Api
             $user->birthDate = date('Y-m-d', strtotime($data['birthday']));
         }
 
+        $user->info = $data;
+
         return $user;
     }
 }

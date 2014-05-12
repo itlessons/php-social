@@ -50,6 +50,8 @@ class ApiGithub extends Api
         $user->photoUrl = $data['avatar_url'];
         $user->email = $data['email'];
 
+        $user->info = $data;
+
         return $user;
     }
 }
