@@ -104,7 +104,6 @@ abstract class OAuth1 extends Auth
 
     public function isValidToken($token)
     {
-        $token = $this->parseToken($token);
         return !empty($token['oauth_token']) && !empty($token['oauth_token_secret']);
     }
 
@@ -119,15 +118,6 @@ abstract class OAuth1 extends Auth
         }
 
         return $request->exec($method, $url, $parameters);
-    }
-
-    protected function parseToken($token)
-    {
-        if (is_string($token)) {
-            return Utils::parseStr($token);
-        }
-
-        return $token;
     }
 
     protected static function getStorage()
