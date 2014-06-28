@@ -1,7 +1,7 @@
 # php-social
 
 The library to make work with social networks easy.
-They can auth with OAuth 2.0 protocol and retrieve user profile info.
+They can auth with OAuth 2.0 or OAuth 1+ protocols and retrieve user profile info.
 Support Vkontakte, Facebook, Twitter, Github, MailRu.
 
 ## How to use
