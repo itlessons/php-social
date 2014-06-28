@@ -8,23 +8,13 @@ use Social\Utils;
 
 class AuthGithub extends OAuth2
 {
-    const AUTH_URL_TW = 'https://github.com/login/oauth/authorize';
-    const TOKEN_URL_TW = 'https://github.com/login/oauth/access_token';
-
-    public function __construct($id, $secret, $scope = '')
-    {
-        parent::__construct(self::AUTH_URL_TW, $id, $secret, self::TOKEN_URL_TW, $scope);
-    }
-
     public function isValidToken($token)
     {
-        $token = $this->parseToken($token);
         return !empty($token['access_token']);
     }
 
     protected function createToken($token)
     {
-        $token = $this->parseToken($token);
         return new Token($this->getType(), $token['access_token'], -1, -1);
     }
 
@@ -33,12 +23,13 @@ class AuthGithub extends OAuth2
         return Type::GITHUB;
     }
 
-    private function parseToken($token)
+    protected function getAuthUrl()
     {
-        if (is_string($token)) {
-            return Utils::parseStr($token);
-        }
+        return 'https://github.com/login/oauth/authorize';
+    }
 
-        return $token;
+    protected function getTokenUrl()
+    {
+        return 'https://github.com/login/oauth/access_token';
     }
 }

@@ -6,21 +6,16 @@ use Social\Error;
 
 abstract class OAuth2 extends Auth
 {
-
     private $id;
     private $secret;
 
-    private $tokenUrl;
     private $scope;
 
-    public function __construct($authUrl, $id, $secret, $tokenUrl, $scope)
+    public function __construct($id, $secret, $scope)
     {
         $this->id = $id;
         $this->secret = $secret;
-        $this->tokenUrl = $tokenUrl;
         $this->scope = $scope;
-
-        parent::__construct($authUrl);
     }
 
     public function getId()
@@ -38,10 +33,7 @@ abstract class OAuth2 extends Auth
         return $this->secret;
     }
 
-    public function getTokenUrl()
-    {
-        return $this->tokenUrl;
-    }
+    protected abstract function getTokenUrl();
 
     protected function requestAccessToken(array $request, $redirectUri)
     {

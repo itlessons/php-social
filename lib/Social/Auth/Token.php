@@ -6,14 +6,14 @@ class Token
 {
     private $type;
     private $accessToken;
-    private $userId;
+    private $identifier;
     private $expiresIn;
 
-    public function __construct($type, $accessToken, $userId, $expiresIn)
+    public function __construct($type, $accessToken, $identifier, $expiresIn)
     {
         $this->type = $type;
         $this->accessToken = $accessToken;
-        $this->userId = $userId;
+        $this->identifier = $identifier;
         $this->expiresIn = $expiresIn;
     }
 
@@ -32,8 +32,8 @@ class Token
         return $this->expires_in;
     }
 
-    public function getUserId()
+    public function getIdentifier()
     {
-        return $this->userId;
+        return $this->identifier;
     }
 }

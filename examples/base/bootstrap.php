@@ -13,7 +13,7 @@ spl_autoload_register(
             return;
         }
 
-        throw new \LogicException(sprintf('Class "%s" not found in "%s"', $class, $path));
+        //throw new \LogicException(sprintf('Class "%s" not found in "%s"', $class, $path));
     }
 );
 

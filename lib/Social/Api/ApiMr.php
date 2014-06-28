@@ -27,7 +27,7 @@ class ApiMr extends Api
 
         $parameters = array(
             'client_id' => $this->appId,
-            'uids' => $token->getUserId(),
+            'uids' => $token->getIdentifier(),
             'secure' => '1',
             'method' => 'users.getInfo',
             'session_key' => $token->getAccessToken(),

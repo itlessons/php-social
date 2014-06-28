@@ -13,7 +13,7 @@ class ApiVk extends Api
         $token = $this->getToken();
 
         $parameters = array(
-            'user_ids' => $token->getUserId(),
+            'user_ids' => $token->getIdentifier(),
             'access_token' => $token->getAccessToken(),
             'fields' => 'first_name,last_name,nickname,screen_name,sex,photo_50,photo_200_orig,photo_200,bdate',
             'v' => '5.2',

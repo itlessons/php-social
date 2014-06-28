@@ -9,6 +9,7 @@ final class Type
     const MR = 2;
     const FB = 3;
     const GITHUB = 4;
+    const TWITTER = 5;
 
     public static function getName($type)
     {
@@ -21,6 +22,8 @@ final class Type
                 return 'Facebook';
             case self::GITHUB:
                 return 'Github';
+            case self::TWITTER:
+                return 'Twitter';
         }
 
         return 'Unknown';
@@ -28,6 +31,6 @@ final class Type
 
     public static function exists($type)
     {
-        return $type >= self::VK && $type <= self::GITHUB;
+        return $type >= self::VK && $type <= self::TWITTER;
     }
 }

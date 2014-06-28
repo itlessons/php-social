@@ -12,17 +12,10 @@ abstract class Auth
      */
     private $token;
 
-    private $authUrl;
-
     /**
      * @var Error
      */
     private $error;
-
-    public function __construct($authUrl)
-    {
-        $this->authUrl = $authUrl;
-    }
 
     public function getError()
     {
@@ -41,6 +34,8 @@ abstract class Auth
         if ($token == null) {
             return null;
         }
+
+        $token = $this->parseToken($token);
 
         if (!$this->isValidToken($token)) {
             $this->setError(Error::createFromRequest($request, Error::INVALID_TOKEN));
@@ -61,18 +56,29 @@ abstract class Auth
 
     abstract public function getType();
 
-    public function getAuthUrl()
-    {
-        return $this->authUrl;
-    }
+    protected abstract function getAuthUrl();
 
     public function getToken()
     {
         return $this->token;
     }
 
-    protected function execPost($url, array $data = array())
+    protected function execPost($url, $data = array())
     {
         return Utils::execPost($url, $data);
+    }
+
+    protected function execGet($url, array $data = array())
+    {
+        return Utils::execGet($url, $data);
+    }
+
+    protected function parseToken($token)
+    {
+        if (is_string($token) && false !== strpos($token, '&')) {
+            return Utils::parseStr($token);
+        }
+
+        return $token;
     }
 }

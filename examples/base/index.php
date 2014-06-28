@@ -11,7 +11,6 @@ if (isset($_SESSION['auth'])) {
 }
 
 if ($token) {
-
     $api = \Social\Factory::getInstance()->createApi($token);
     $user = $api->getProfile();
 
@@ -55,6 +54,8 @@ if ($token) {
         <a href="auth.php?type=3">Auth by facebook</a>
         &nbsp;|&nbsp;
         <a href="auth.php?type=4">Auth by github</a>
+        &nbsp;|&nbsp;
+        <a href="auth.php?type=5">Auth by twitter</a>
     <?php endif; ?>
 </div>
 </body>

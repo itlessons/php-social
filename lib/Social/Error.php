@@ -15,9 +15,12 @@ class Error
     const SERVER_ERROR = 'server_error';
     const TEMPORARILY_UNAVAILABLE = 'temporarily_unavailable';
 
-
     const INVALID_CODE = 'invalid_code';
     const INVALID_TOKEN = 'invalid_token';
+
+    // OAUTH 1.0 errors
+    const INVALID_VERIFIER = 'invalid_verifier';
+    const INVALID_RESPONSE = 'invalid_response';
 
     private $error;
     private $description;
@@ -28,17 +31,21 @@ class Error
         $this->description = $description;
     }
 
-    public static function createFromRequest(array $request, $default = null)
+    public static function createFromRequest($request, $default = null)
     {
         $error = $default;
         $description = null;
 
-        if (isset($request['error'])) {
-            $error = $request['error'];
-        }
+        if (is_string($request)) {
+            $error = $request;
+        } else {
+            if (isset($request['error'])) {
+                $error = $request['error'];
+            }
 
-        if (isset($request['error_description'])) {
-            $description = $request['error_description'];
+            if (isset($request['error_description'])) {
+                $description = $request['error_description'];
+            }
         }
 
         return new self($error, $description);

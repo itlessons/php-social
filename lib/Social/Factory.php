@@ -6,11 +6,13 @@ use Social\Api\Api;
 use Social\Api\ApiFb;
 use Social\Api\ApiMr;
 use Social\Api\ApiGithub;
+use Social\Api\ApiTwitter;
 use Social\Api\ApiVk;
 use Social\Auth\Auth;
 use Social\Auth\AuthFb;
 use Social\Auth\AuthMr;
 use Social\Auth\AuthGithub;
+use Social\Auth\AuthTwitter;
 use Social\Auth\AuthVk;
 use Social\Auth\Token;
 
@@ -66,6 +68,11 @@ class Factory
                     $this->settings[$type]['secret_key'],
                     $this->settings[$type]['scope']
                 );
+            case Type::TWITTER:
+                return new AuthTwitter(
+                    $this->settings[$type]['app_id'],
+                    $this->settings[$type]['secret_key']
+                );
         }
 
         throw new \InvalidArgumentException('Auth strategy not implement!');
@@ -93,6 +100,12 @@ class Factory
                 return new ApiFb($token);
             case Type::GITHUB:
                 return new ApiGithub($token);
+            case Type::TWITTER:
+                return new ApiTwitter(
+                    $this->settings[$type]['app_id'],
+                    $this->settings[$type]['secret_key'],
+                    $token
+                );
         }
 
         throw new \InvalidArgumentException('Api strategy not implement!');
@@ -101,7 +114,7 @@ class Factory
     private function validateSettings($settings)
     {
         foreach ($settings as $type => $data) {
-            if (!isset($data['app_id']) || $data['app_id'] <= 0) {
+            if (!isset($data['app_id']) || !$data['app_id']) {
                 throw new \InvalidArgumentException(sprintf('Specify app_id for "%s"', Type::getName($type)));
             }
 

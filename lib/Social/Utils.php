@@ -4,8 +4,7 @@ namespace Social;
 
 class Utils
 {
-
-    public static function execPost($url, array $data = array())
+    public static function execPost($url, $data = array())
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
