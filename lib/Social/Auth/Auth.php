@@ -3,6 +3,7 @@
 namespace Social\Auth;
 
 use Social\Error;
+use Social\Util\HttpClient;
 use Social\Utils;
 
 abstract class Auth
@@ -65,20 +66,41 @@ abstract class Auth
 
     protected function execPost($url, $data = array())
     {
-        return Utils::execPost($url, $data);
+        return HttpClient::exec('POST', $url, $data);
     }
 
     protected function execGet($url, array $data = array())
     {
-        return Utils::execGet($url, $data);
+        return HttpClient::exec('GET', $url, $data);
     }
 
     protected function parseToken($token)
     {
         if (is_string($token) && false !== strpos($token, '&')) {
-            return Utils::parseStr($token);
+            return static::parseStringResponse($token);
         }
 
         return $token;
+    }
+
+    public static function parseStringResponse($str)
+    {
+        $arr = array();
+        $pairs = explode('&', $str);
+
+        foreach ($pairs as $i) {
+            list($name, $value) = explode('=', $i, 2);
+            if (isset($arr[$name])) {
+                if (is_array($arr[$name])) {
+                    $arr[$name][] = $value;
+                } else {
+                    $arr[$name] = array($arr[$name], $value);
+                }
+            } else {
+                $arr[$name] = $value;
+            }
+        }
+
+        return $arr;
     }
 }

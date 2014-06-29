@@ -2,7 +2,6 @@
 
 namespace Social\Api;
 
-
 use Social\Auth\Token;
 use Social\Util\OAuth1Client;
 
@@ -25,7 +24,7 @@ class ApiTwitter extends Api
     {
         $token = $this->getToken();
 
-        $response = $this->execApi('users/lookup', array(
+        $response = $this->apiGet('users/lookup', array(
             'screen_name' => $token->getIdentifier(),
         ));
 
@@ -60,7 +59,22 @@ class ApiTwitter extends Api
         return $user;
     }
 
-    private function execApi($apiMethod, array $parameters = array())
+    public function apiDelete($apiMethod, array $parameters = array())
+    {
+        return $this->apiExec('DELETE', $apiMethod, $parameters);
+    }
+
+    public function apiPost($apiMethod, array $parameters = array())
+    {
+        return $this->apiExec('POST', $apiMethod, $parameters);
+    }
+
+    public function apiGet($apiMethod, array $parameters = array())
+    {
+        return $this->apiExec('GET', $apiMethod, $parameters);
+    }
+
+    public function apiExec($method, $apiMethod, array $parameters = array())
     {
         $token = $this->getToken();
         $accessToken = $token->getAccessToken();
@@ -71,7 +85,7 @@ class ApiTwitter extends Api
             $accessToken[1]);
 
         $url = $this->apiUrl . $apiMethod . '.json';
-        $data = $client->exec('GET', $url, $parameters);
+        $data = $client->exec($method, $url, $parameters);
 
         $response = json_decode($data, true);
         if ($response === null)

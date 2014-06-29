@@ -3,6 +3,7 @@
 namespace Social\Api;
 
 use Social\Auth\Token;
+use Social\Util\HttpClient;
 use Social\Utils;
 
 abstract class Api
@@ -27,7 +28,7 @@ abstract class Api
 
     protected function execGet($url, array $data = array())
     {
-        return Utils::execGet($url, $data);
+        return HttpClient::exec('GET', $url, $data);
     }
 
     public function getError()

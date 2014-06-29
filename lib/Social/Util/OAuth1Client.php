@@ -45,14 +45,7 @@ class OAuth1Client
 
         $parametersStr = OAuth1Client::buildHttpQuery($parameters);
 
-        switch ($method) {
-            case 'GET':
-                return Utils::execGet($url . '?' . $parametersStr);
-            case 'POST':
-                return Utils::execPost($url, $parametersStr);
-            default:
-                throw new \LogicException('Request method not implement');
-        }
+        return HttpClient::exec($method, $url, $parametersStr);
     }
 
     private function buildOAuthSignature($method, $url, $parameters)

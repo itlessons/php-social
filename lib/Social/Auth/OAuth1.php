@@ -63,7 +63,7 @@ abstract class OAuth1 extends Auth
             return null;
         }
 
-        $this->requestToken = Utils::parseStr($data);
+        $this->requestToken = static::parseStringResponse($data);
         $this->getStorage()->save(self::getStorageKey(), $this->requestToken);
         return $this->requestToken;
     }
