@@ -1,62 +1,82 @@
-# php-social
+php-social
+==========
 
 The library to make work with social networks easy.
 They can auth with OAuth 2.0 or OAuth 1+ protocols and retrieve user profile info.
 Support Vkontakte, Facebook, Twitter, Github, MailRu.
+Works with PHP 5.3.3 or later.
 
-## How to use
+Usage
+-----
 
-For example, auth in vk.com
+You can see [base example](https://github.com/itlessons/php-social/tree/master/examples/base).
 
-```php
-// auth_vk.php
-$APP_ID_VK = -1; // app id
-$APP_SECRET_VK = 'some secret code';
-$APP_SCOPE_VK = ''; //some permissions
-$REDIRECT_URL_VK = 'http://domain.ltd/auth_callback_vk.php';
+Auth in vk.com:
 
-$auth = new \Social\Auth\AuthVk($APP_ID_VK, $APP_SECRET_VK, $APP_SCOPE_VK);
-$url = $auth->getAuthorizeUrl($REDIRECT_URL_VK);
-stopAndRedirect($url);
-```
+    // config.php
+    $APP_ID_VK = -1; // app id
+    $APP_SECRET_VK = 'some secret code';
+    $APP_SCOPE_VK = ''; //some permissions
+    $REDIRECT_URL_VK = 'http://domain.ltd/auth_callback_vk.php';
+
+
+    // auth_vk.php
+    require __DIR__.'/config.php';
+    $auth = new \Social\Auth\AuthVk($APP_ID_VK, $APP_SECRET_VK, $APP_SCOPE_VK);
+    $url = $auth->getAuthorizeUrl($REDIRECT_URL_VK);
+    stopAndRedirect($url);
 
 Now create callback file and get first api call:
 
-```php
-// auth_callback_vk.php
-$APP_ID_VK = -1; // app id
-$APP_SECRET_VK = 'some secret code';
-$APP_SCOPE_VK = ''; //some permissions
-$REDIRECT_URL_VK = 'http://domain.ltd/auth_callback_vk.php';
+    // auth_callback_vk.php
+    require __DIR__.'/config.php';
+    $auth = new \Social\Auth\AuthVk($APP_ID_VK, $APP_SECRET_VK, $APP_SCOPE_VK);
+    $token = $auth->authenticate($_REQUEST, $REDIRECT_URL_VK);
 
-$auth = new \Social\Auth\AuthVk($APP_ID_VK, $APP_SECRET_VK, $APP_SCOPE_VK);
-$token = $auth->authenticate($_REQUEST, $REDIRECT_URL_VK);
+    if($token == null){
+        var_dump($auth->getError());
+        //exit
+    }
 
-if($token == null){
-    var_dump($auth->getError());
-    //exit
-}
+    //call api with access_token
+    $api = new \Social\Api\ApiVk($token);
+    $user = $api->getProfile();
 
-//call api with access_token
-$api = new \Social\Api\ApiVk($token);
-$user = $api->getProfile();
+    //use user data
 
-//use user data
+    // $user->id
+    // $user->firstName
+    // $user->lastName
+    // $user->nickname
+    // $user->screenName
+    // $user->photoUrl
+    // $user->photoBigUrl
+    // ...
 
-// $user->id
-// $user->firstName
-// $user->lastName
-// $user->nickname
-// $user->screenName
-// $user->photoUrl
-// $user->photoBigUrl
-// ...
-```
 
-## Links
+Installation
+------------
+
+The recommended way to install php-social is through [Composer][_Composer]. Just create a
+``composer.json`` file and run the ``php composer.phar install`` command to
+install it:
+
+.. code-block:: json
+
+    {
+        "require": {
+            "itlessons/php-social": "*"
+        }
+    }
+
+Alternatively, you can download the [php-social.zip][_php-social.zip] file and extract it.
+
+Read
+----
+
   * [Авторизация с помощью OAuth 2.0 в Вконтакте, Моем мире и Facebook] (http://www.itlessons.info/php/auth-with-oauth2-in-vk-mailru-facebook/)
   * [Авторизация на вашем сайте с помощью Github] (http://www.itlessons.info/php/auth-with-oauth2-in-github/)
 
 
-## Author
-[itlessons](http://www.itlessons.info) ([@itlessonsinfo](http://twitter.com/itlessonsinfo))
+[_Composer]: http://getcomposer.org
+[_php-social.zip]:  https://github.com/itlessons/php-social/archive/master.zip
