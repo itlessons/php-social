@@ -61,8 +61,6 @@ The recommended way to install php-social is through [Composer][_Composer]. Just
 ``composer.json`` file and run the ``php composer.phar install`` command to
 install it:
 
-.. code-block:: json
-
     {
         "require": {
             "itlessons/php-social": "*"
