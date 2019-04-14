@@ -1,12 +1,18 @@
-php-social
+# php-social
+
 ==========
+
+## Brief
+
+-----
 
 The library to make work with social networks easy.
 They can auth with OAuth 2.0 or OAuth 1+ protocols and retrieve user profile info.
 Support Vkontakte, Facebook, Twitter, Github, MailRu.
 Works with PHP 5.3.3 or later.
 
-Usage
+## Usage
+
 -----
 
 You can see [base example](https://github.com/itlessons/php-social/tree/master/examples/base).
@@ -56,11 +62,11 @@ $user = $api->getProfile();
 // ...
 ```
 
-Installation
+## Installation
 ------------
 
 The recommended way to install php-social is through [Composer][_Composer]. Just create a
-``composer.json`` file and run the ``php composer.phar install`` command to
+`composer.json` file and run the `php composer.phar install` command to
 install it:
 
 ```json
@@ -71,7 +77,7 @@ install it:
 }
 ```
 
-Or you can use the console command:
+Or you can use the console command from your project root folder:
 
 ```sh
 $ composer require itlessons/php-social
