@@ -71,6 +71,12 @@ install it:
 }
 ```
 
+Or you can use the console command:
+
+```sh
+$ composer require itlessons/php-social
+```
+
 Alternatively, you can download the [php-social.zip][_php-social.zip] file and extract it.
 
 Read
