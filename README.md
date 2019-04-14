@@ -19,9 +19,7 @@ $APP_ID_VK = -1; // app id
 $APP_SECRET_VK = 'some secret code';
 $APP_SCOPE_VK = ''; //some permissions
 $REDIRECT_URL_VK = 'http://domain.ltd/auth_callback_vk.php';
-```
 
-```php
 // auth_vk.php
 require __DIR__.'/config.php';
 $auth = new \Social\Auth\AuthVk($APP_ID_VK, $APP_SECRET_VK, $APP_SCOPE_VK);
