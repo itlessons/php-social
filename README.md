@@ -65,7 +65,7 @@ $user = $api->getProfile();
 ## Installation
 ------------
 
-The recommended way to install php-social is through [Composer][_Composer]. Just create a
+The recommended way to install php-social is through [Composer](http://getcomposer.org). Just create a
 `composer.json` file and run the `php composer.phar install` command to
 install it:
 
@@ -83,7 +83,7 @@ Or you can use the console command from your project root folder:
 $ composer require itlessons/php-social
 ```
 
-Alternatively, you can download the [php-social.zip][_php-social.zip] file and extract it.
+Alternatively, you can download the [php-social.zip](https://github.com/itlessons/php-social/archive/master.zip) file and extract it.
 
 Read
 ----
@@ -92,6 +92,3 @@ Read
   * [Авторизация на вашем сайте с помощью Github](http://www.itlessons.info/php/auth-with-oauth2-in-github/)
   * [Авторизация и работа с Twitter Api через OAuth](http://www.itlessons.info/php/twitter-oauth-login-and-api/)
 
-
-[\_Composer](http://getcomposer.org)
-[\_php-social.zip](https://github.com/itlessons/php-social/archive/master.zip)
