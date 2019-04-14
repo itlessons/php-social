@@ -82,10 +82,10 @@ Alternatively, you can download the [php-social.zip][_php-social.zip] file and e
 Read
 ----
 
-  * [Авторизация с помощью OAuth 2.0 в Вконтакте, Моем мире и Facebook] (http://www.itlessons.info/php/auth-with-oauth2-in-vk-mailru-facebook/)
-  * [Авторизация на вашем сайте с помощью Github] (http://www.itlessons.info/php/auth-with-oauth2-in-github/)
-  * [Авторизация и работа с Twitter Api через OAuth] (http://www.itlessons.info/php/twitter-oauth-login-and-api/)
+  * [Авторизация с помощью OAuth 2.0 в Вконтакте, Моем мире и Facebook](http://www.itlessons.info/php/auth-with-oauth2-in-vk-mailru-facebook/)
+  * [Авторизация на вашем сайте с помощью Github](http://www.itlessons.info/php/auth-with-oauth2-in-github/)
+  * [Авторизация и работа с Twitter Api через OAuth](http://www.itlessons.info/php/twitter-oauth-login-and-api/)
 
 
-[_Composer]: http://getcomposer.org
-[_php-social.zip]:  https://github.com/itlessons/php-social/archive/master.zip
+[\_Composer](http://getcomposer.org)
+[\_php-social.zip](https://github.com/itlessons/php-social/archive/master.zip)
